@@ -4,15 +4,9 @@ module Executrix
   module Helper
     extend self
 
-    CSV_OPTIONS = {
-      col_sep: ',',
-      quote_char: '"',
-      force_quotes: true,
-    }
-
     def records_to_csv records
       file_mock = StringIO.new
-      csv_client = CSV.new(file_mock, CSV_OPTIONS)
+      csv_client = CSV.new(file_mock, col_sep: ',', quote_char: '"', force_quotes: true)
       all_headers = []
       all_rows = []
       records.each do |hash|
